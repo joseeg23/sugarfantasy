@@ -37,6 +37,12 @@ public class Postre implements Serializable {
     public Postre() {
     }
 
+    public Postre(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+    
+
     public Foto getFoto() {
         return foto;
     }

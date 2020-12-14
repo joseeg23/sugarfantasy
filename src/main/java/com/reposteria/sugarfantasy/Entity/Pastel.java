@@ -40,6 +40,15 @@ public class Pastel implements Serializable {
     public Pastel() {
     }
 
+    public Pastel(String nombre, String relleno, String bizcocho, String cubierta, String tamano) {
+        this.nombre = nombre;
+        this.relleno = relleno;
+        this.bizcocho = bizcocho;
+        this.cubierta = cubierta;
+        this.tamano = tamano;
+    }
+    
+
     public String getId() {
         return id;
     }
