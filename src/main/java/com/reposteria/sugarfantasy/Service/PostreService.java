@@ -61,7 +61,7 @@ public class PostreService {
              postre.setBaja(baja);
              repositorio.save(postre);
          }else{
-             throw new Exception("Postre no encontra para dar de  baja");
+             throw new Exception("Postre no encontrado para dar de baja");
          }
      }
      

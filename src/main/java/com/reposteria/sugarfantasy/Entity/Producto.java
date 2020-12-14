@@ -30,8 +30,12 @@ public class Producto implements Serializable {
 
     public Producto() {
     }
-    
 
+    public Producto(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+    }
+    
     public Foto getFoto() {
         return foto;
     }
