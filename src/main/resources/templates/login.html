@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>login</title>
+  <link rel="icon" type="image/jpg" href="img/logo sugarfantasy.jpg" >
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/css/business-casual.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <main>
+    <div class="container">
+      <div class="row justify-content-center">    
+            <div style="align-items: center;" class="col-lg-6">
+                <div class="card shadow-lg border-0 mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Inicia sesión</h3></div>
+                    <div class="card-body">
+                        <form action="/logincheck" method="POST"  >
+                            <p class="text-info"  th:text="${exito}"></p>
+                            <p class="text-danger"  th:text="${error}"></p>
+                            <p class="text-danger"  th:text="${logout}"></p>
+                           
+                            <div class="form-group">
+                                <label class="small mb-1" for="usuario">username</label>
+                                <input class="form-control py-4" name="username"  th:value="${username}" type="text" placeholder="Ingresa tu usuario" required/>
+                            </div>
+                            <div class="form-group">
+                                <label class="small mb-1" for="clave">Contraseña</label>
+                                <input class="form-control py-4" name="clave" type="password" placeholder="Ingresa tu clave" required/>
+                            </div>
+                           
+                            <button type="submit" class="btn btn-primary"  >INGRESAR</button>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center">
+                        <div class="small"><a href="/usuario/registro">No tienes una cuenta? Registrate!</a></div>
+                        <div class="small"><a href="/">Volver a la pagina</a></div>
+                    </div>
+                </div>
+            </div>
+      </div>
+</main>
+
+<div th:replace="fragments::footer"></div>
+
+</body>
+
+</html>

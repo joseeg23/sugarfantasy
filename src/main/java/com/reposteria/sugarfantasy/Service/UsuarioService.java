@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,7 +28,7 @@ public class UsuarioService implements UserDetailsService {
 
     @Autowired
     private UsuarioRepositorio repositorio;
-
+ @Transactional
     public void alta(String username, String nombre, String email, String clave) throws Exception {
 
         try {
@@ -48,7 +49,8 @@ public class UsuarioService implements UserDetailsService {
             throw new Exception(e.getMessage());
         }
     }
-
+    
+ @Transactional
     public void modificar(String username, String nombre, String email, String clave) throws Exception {
        
         validar(username, nombre, email, clave);

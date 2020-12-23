@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>registro</title>
+  <link rel="icon" type="image/jpg" href="img/logo sugarfantasy.jpg" >
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/css/business-casual.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Registrarse</h3></div>
+                    <div class="card-body">
+                        <form action="/usuario/registrar" method="POST">
+                           
+                            <p class="text-danger"  th:text="${error}"></p>
+                            <p class="text-danger"  th:text="${logout}"></p>
+                            <div class="form-group">
+                                <label class="small mb-1" for="inputEmailAddress">username</label>
+                                <input class="form-control py-4"  type="text" name="username"  th:value="${username}" placeholder="username" required />
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="small mb-1" for="inputFirstName">Nombre</label>
+                                        <input class="form-control py-4" type="text" name="nombre"  th:value="${nombre}" placeholder="Ingresar nombre" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label class="small mb-1" for="inputEmailAddress">Correo electronico</label>
+                                    <input class="form-control py-4" type="email" name="mail"  th:value="${mail}" placeholder="Ingresar mail" required/>
+                                </div>
+                                </div>
+                            </div>
+                         
+                        
+                            <div class="form-group">
+                                 <label class="small mb-1" for="inputPassword">Contraseña</label>
+                                 <input class="form-control py-4"  type="password" name="clave" placeholder="Ingresar contraseña" required/>
+                             </div>
+                                
+                           
+                            <button type="submit" class="btn btn-primary" >registrar</button>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center">
+                        <div class="small"><a href="/login">Ya tenes una cuenta? Click aquí para iniciar sesión</a></div>
+                        <div class="small"><a href="/">Volver a la pagina</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="fragments::footer"></div>
+</body>
+
+</html>
