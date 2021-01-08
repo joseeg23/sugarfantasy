@@ -26,16 +26,22 @@ public class PastelService {
      * @param bizcocho sabor
      * @param cubierta tipo
      * @param tamano cuantas personas
+     * @param preciop
+     * @param preciom
      * @param archivo para foto
      * @throws Exception metodo para guardar un objeto de tipo pastel
      */
     @Transactional
-    public void alta(String nombre, String relleno, String bizcocho, String cubierta, String tamano, MultipartFile archivo) throws Exception {
+    public void alta(String nombre, String relleno, String bizcocho, String cubierta, String tamano, String preciop, String preciom, MultipartFile archivo) throws Exception {
 
         try {
             verificar(nombre, relleno, bizcocho, cubierta, tamano);
 
             Pastel pastel = new Pastel(nombre, relleno, bizcocho, cubierta, tamano);
+            int p = Integer.parseInt(preciop);
+            int p2 = Integer.parseInt(preciom);
+            pastel.setPrecioP(p);
+            pastel.setPrecioM(p2);
             Date alta = new Date();
             pastel.setAlta(alta);
             Foto foto = fotoS.guardar(archivo); //guardo foto y seteo en objeto
@@ -48,7 +54,7 @@ public class PastelService {
     }
 
     @Transactional
-    public void modificar(String id, String nombre, String relleno, String bizcocho, String cubierta, String tamano, MultipartFile archivo) throws Exception {
+    public void modificar(String id, String nombre, String relleno, String bizcocho, String cubierta, String tamano, String preciop, String preciom, MultipartFile archivo) throws Exception {
 
         try {
 
@@ -60,6 +66,12 @@ public class PastelService {
             pastel.setNombre(nombre);
             pastel.setRelleno(relleno);
             pastel.setTamano(tamano);
+
+            int p = Integer.parseInt(preciop);
+            int p2 = Integer.parseInt(preciom);
+            pastel.setPrecioP(p);
+            pastel.setPrecioM(p2);
+            
             Foto foto = fotoS.actualizar(pastel.getFoto().getId(), archivo);
             if (foto != null) {
                 pastel.setFoto(foto);
@@ -82,6 +94,18 @@ public class PastelService {
             repositorio.save(pastel);
         } else {
             throw new Exception("Pastel no encontrado para dar de baja");
+        }
+    }
+    
+     @Transactional
+    public Pastel buscarPorId(String id) throws Exception {
+        Optional<Pastel> buscar = repositorio.findById(id);
+
+        if (buscar.isPresent()) {
+            Pastel pastel = buscar.get();
+           return pastel;
+        } else {
+            throw new Exception("Pastel no encontrado");
         }
     }
 

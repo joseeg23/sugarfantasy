@@ -83,6 +83,14 @@
                                 <input type="text" name="tamano" placeholder="tamaño" class="form-control" ></input>
                             </div>
                             <div class="col-md col-sm-12 form-group" >
+                                <h6>Precio pequeña</h6>
+                                <input type="number" name="preciop" placeholder="precio" class="form-control">
+                            </div>
+                            <div class="col-md col-sm-12 form-group" >
+                                <h6>Precio mediana</h6>
+                                <input type="number" name="preciom" placeholder="precio" class="form-control">
+                            </div>
+                            <div class="col-md col-sm-12 form-group" >
                                 <h6>foto</h6>
                                 <input type="file" name="archivo"  ></input>
                             </div>
@@ -91,8 +99,6 @@
                             </div>
                         </div>
                     </form>
-   
-
         </div>
     </section>
 
@@ -135,6 +141,14 @@
                             <div class="col-md col-sm-12 form-group" >
                                 <h6>tamaño</h6>
                                 <input type="text" name="tamano" placeholder="tamaño" class="form-control" ></input>
+                            </div>
+                            <div class="col-md col-sm-12 form-group" >
+                                <h6>Precio pequeña</h6>
+                                <input type="number" name="preciop" placeholder="precio" class="form-control">
+                            </div>
+                            <div class="col-md col-sm-12 form-group" >
+                                <h6>Precio mediana</h6>
+                                <input type="number" name="preciom" placeholder="precio" class="form-control">
                             </div>
                             <div class="col-md col-sm-12 form-group" >
                                 <h6>foto</h6>
@@ -188,6 +202,8 @@
                 <th scope="col">Bizcocho</th>
                 <th scope="col">Cubierta</th>
                 <th scope="col">Tamaño</th>
+                <th scope="col">Precio pequeña</th>
+                <th scope="col">Precio mediana</th>
               </tr>
             </thead>
             <tbody>
@@ -197,6 +213,8 @@
                 <td th:text="${pastel.bizcocho}"></td>
                 <td th:text="${pastel.cubierta}"></td>
                 <td th:text="${pastel.tamano}"></td>
+                <td th:text="${pastel.precioP}"></td>
+                <td th:text="${pastel.precioM}"></td>
              
               </tr>
     </section>

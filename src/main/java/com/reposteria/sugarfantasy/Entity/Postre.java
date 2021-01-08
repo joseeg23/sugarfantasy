@@ -25,6 +25,8 @@ public class Postre implements Serializable {
     private Long id;
     private String nombre;
     private String descripcion;
+    private int precio;
+    
     @Temporal(TemporalType.DATE)
     private Date alta;
     @Temporal(TemporalType.DATE)
@@ -37,9 +39,20 @@ public class Postre implements Serializable {
     public Postre() {
     }
 
-    public Postre(String nombre, String descripcion) {
+    public Postre(String nombre, String descripcion, int precio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.precio = precio;
+    }
+
+   
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
     }
     
 

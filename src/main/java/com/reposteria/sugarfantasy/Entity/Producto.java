@@ -20,6 +20,8 @@ public class Producto implements Serializable {
     private Long id;
     private String nombre;
     private String descripcion;
+    private int precio;
+
     @Temporal(TemporalType.DATE)
     private Date alta;
     @Temporal(TemporalType.DATE)
@@ -31,11 +33,20 @@ public class Producto implements Serializable {
     public Producto() {
     }
 
-    public Producto(String nombre, String descripcion) {
+    public Producto(String nombre, String descripcion, int precio) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.precio = precio;
     }
-    
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
     public Foto getFoto() {
         return foto;
     }

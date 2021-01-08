@@ -4,6 +4,7 @@ import com.reposteria.sugarfantasy.Service.PostreService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
+//@PreAuthorize("ROLE_ADMIN")
 @RequestMapping("/postre")
 public class PostreController {
 
@@ -27,10 +29,10 @@ public class PostreController {
 
     @PostMapping("/registrar")
     public String registrar(ModelMap modelo, @RequestParam String nombre, @RequestParam String descripcion,
-            @RequestParam MultipartFile archivo) {
+           @RequestParam String precio, @RequestParam MultipartFile archivo) {
 
         try {
-            postreS.alta(nombre, descripcion, archivo);
+            postreS.alta(nombre, descripcion,precio, archivo);
             modelo.put("exito", "postre registrado con exito");
              modelo.put("postres", postreS.lista());
             return "abmpostre.html";
@@ -45,10 +47,10 @@ public class PostreController {
 
     @PostMapping("/modificar")
     public String modificar(ModelMap modelo, @RequestParam String id, @RequestParam String nombre, @RequestParam String descripcion,
-            @RequestParam MultipartFile archivo) {
+           @RequestParam String precio, @RequestParam MultipartFile archivo) {
 
         try {
-            postreS.modificar(id, nombre, descripcion, archivo);
+            postreS.modificar(id, nombre, descripcion, precio, archivo);
             modelo.put("exitom", "postre modificado con exito");
              modelo.put("postres", postreS.lista());
             return "abmpostre.html";

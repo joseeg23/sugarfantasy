@@ -13,53 +13,56 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class PostreService {
-
+    
     @Autowired
     private PostreRepositorio repositorio;
     @Autowired
     private FotoService fotoS;
-
+    
     @Transactional
-    public void alta(String nombre, String descripcion, MultipartFile archivo) throws Exception {
+    public void alta(String nombre, String descripcion, String precio, MultipartFile archivo) throws Exception {
         try {
             verificar(nombre, descripcion);
-            Postre postre = new Postre(nombre, descripcion);
+            int p = Integer.parseInt(precio);
+            Postre postre = new Postre(nombre, descripcion, p);
             Date alta = new Date();
             postre.setAlta(alta);
             Foto foto = fotoS.guardar(archivo);
             postre.setFoto(foto);
-
+            
             repositorio.save(postre);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-
+        
     }
-
+    
     @Transactional
-    public void modificar(String id, String nombre, String descripcion, MultipartFile archivo) throws Exception {
+    public void modificar(String id, String nombre, String descripcion, String precio, MultipartFile archivo) throws Exception {
         try {
             verificar(nombre, descripcion);
             Postre postre = repositorio.getOne(Long.parseLong(id));
             postre.setNombre(nombre);
             postre.setDescripcion(descripcion);
-
+            int p = Integer.parseInt(precio);
+            postre.setPrecio(p);
+            
             Foto foto = fotoS.actualizar(postre.getFoto().getId(), archivo);
             if (foto != null) {
                 postre.setFoto(foto);
             }
-
+            
             repositorio.save(postre);
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
-
+        
     }
-
+    
     @Transactional
     public void baja(String id) throws Exception {
         Optional<Postre> buscar = repositorio.findById(Long.parseLong(id));
-
+        
         if (buscar.isPresent()) {
             Postre postre = buscar.get();
             Date baja = new Date();
@@ -69,11 +72,23 @@ public class PostreService {
             throw new Exception("Postre no encontrado para dar de baja");
         }
     }
-
+    
+      @Transactional
+    public Postre buscarPorId(String id) throws Exception {
+        Optional<Postre> buscar = repositorio.findById(Long.parseLong(id));
+        
+        if (buscar.isPresent()) {
+            Postre postre = buscar.get();
+            return postre;
+        } else {
+            throw new Exception("Postre no encontrado");
+        }
+    }
+    
     public List lista() {
         return repositorio.lista();
     }
-
+    
     public void verificar(String nombre, String descripcion) throws Exception {
         if (nombre.isEmpty()) {
             throw new Exception("Debe indicar un nombre");

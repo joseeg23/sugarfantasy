@@ -54,6 +54,14 @@ p {
   margin-top: 5rem;
   margin-bottom: 5rem;
 }
+.caja-1 {
+
+  margin-left: 2%; 
+  margin-right: 1%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border: rgb(226, 167, 223);
+  }
 
 .section-heading {
   text-transform: uppercase;
@@ -81,7 +89,7 @@ p {
 }
 
 #mainNav .navbar-brand {
-  color: #e6a756;
+  color: #e572e9;
 }
 
 #mainNav .navbar-nav .nav-item .nav-link {
@@ -90,7 +98,7 @@ p {
 }
 
 #mainNav .navbar-nav .nav-item.active .nav-link {
-  color: #e6a756;
+  color:  #e572e9;
 }
 
 @media (min-width: 992px) {
@@ -101,7 +109,7 @@ p {
     color: rgba(255, 255, 255, 0.4);
   }
   #mainNav .navbar-nav .nav-item.active .nav-link:hover {
-    color: #e6a756;
+    color: #e572e9;
   }
 }
 .portfolio-item {
@@ -195,8 +203,18 @@ p {
     width: 75%;
     float: right;
   }
+  .intro .intro-img2 {
+    width: 75%;
+    float: left;
+  }
   .intro .intro-text {
     left: 0;
+    width: 60%;
+    margin-top: 3rem;
+    position: absolute;
+  }
+  .intro .intro-text2 {
+    right: 0;
     width: 60%;
     margin-top: 3rem;
     position: absolute;
@@ -205,7 +223,8 @@ p {
     width: 100%;
     left: 0;
     position: absolute;
-    bottom: -2rem;
+    
+    text-align: center;
   }
 }
 
@@ -282,29 +301,31 @@ p {
 }
 
 .footer {
-  background-color: rgba(238, 157, 195, 0.9);
+  background-color: rgba(148, 2, 99, 0.9);
 }
 
 .text-primary {
-  color: #e6a756 !important;
+  color: #e572e9!important;
 }
 
 .bg-primary {
-  background-color: #e6a756 !important;
+  background-color: #e572e9 !important;
 }
 
 .btn {
   box-shadow: 0px 3px 3px 0px rgba(33, 37, 41, 0.1);
+  text-align: center;
+  
 }
 
 .btn-primary {
-  background-color: #e6a756;
-  border-color: #e6a756;
+  background-color:  #e572e9;
+  border-color:  #e572e9;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-  background-color: #df902a;
-  border-color: #df902a;
+  background-color: #e572e9;
+  border-color:  #e572e9;
 }
 
 .font-weight-light {

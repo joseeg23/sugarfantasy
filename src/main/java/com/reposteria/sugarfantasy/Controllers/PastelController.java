@@ -1,8 +1,10 @@
 package com.reposteria.sugarfantasy.Controllers;
 
+import com.reposteria.sugarfantasy.Entity.Usuario;
 import com.reposteria.sugarfantasy.Service.PastelService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,7 +22,9 @@ public class PastelController {
     private PastelService pastelS;
 
     @GetMapping("/")
-    public String portal(ModelMap modelo) {
+    public String portal(ModelMap modelo, HttpSession session) {
+            Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+        System.out.println(usuario.getUsername());
         modelo.put("pasteles", pastelS.lista());
         return "abmpastel.html";
     }
@@ -28,9 +32,9 @@ public class PastelController {
     @PostMapping("/registrar")
     public String registrar(ModelMap modelo, @RequestParam String nombre, @RequestParam String relleno,
             @RequestParam String bizcocho, @RequestParam String cubierta, @RequestParam String tamano,
-            @RequestParam MultipartFile archivo) {
+            @RequestParam String preciop,@RequestParam String preciom,@RequestParam MultipartFile archivo) {
         try {
-            pastelS.alta(nombre, relleno, bizcocho, cubierta, tamano, archivo);
+            pastelS.alta(nombre, relleno, bizcocho, cubierta, tamano, preciop, preciom, archivo);
              modelo.put("exito", "Pastel registrado con exito");
              modelo.put("pasteles", pastelS.lista());
              return "abmpastel.html";
@@ -46,9 +50,9 @@ public class PastelController {
     @PostMapping("/modificar")
     public String modificar(ModelMap modelo, @RequestParam String id, @RequestParam String nombre, @RequestParam String relleno,
             @RequestParam String bizcocho, @RequestParam String cubierta, @RequestParam String tamano,
-            @RequestParam MultipartFile archivo) {
+             @RequestParam String preciop,@RequestParam String preciom,@RequestParam MultipartFile archivo) {
         try {
-            pastelS.modificar(id, nombre, relleno, bizcocho, cubierta, tamano, archivo);
+            pastelS.modificar(id, nombre, relleno, bizcocho, cubierta, tamano, preciop, preciom, archivo);
             modelo.put("exitom", "Pastel modificado con exito");
             modelo.put("pasteles", pastelS.lista());
              return "abmpastel.html";

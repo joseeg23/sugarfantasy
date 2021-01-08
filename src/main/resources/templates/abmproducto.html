@@ -70,6 +70,10 @@
                                 <h6>Descripcion</h6>
                                 <input type="text" name="descripcion" placeholder="descripcion" class="form-control">
                             </div>
+                            <div class="col-md col-sm-12 form-group" >
+                                <h6>Precio</h6>
+                                <input type="number" name="precio" placeholder="precio" class="form-control">
+                            </div>
                            
                             <div class="col-md col-sm-12 form-group" >
                                 <h6>foto</h6>
@@ -112,6 +116,10 @@
                             <div class="col-md col-sm-12 form-group" >
                                 <h6>Descripcion</h6>
                                 <input type="text" name="descripcion" placeholder="descripcion" class="form-control">
+                            </div>
+                            <div class="col-md col-sm-12 form-group" >
+                                <h6>Precio</h6>
+                                <input type="number" name="precio" placeholder="precio" class="form-control">
                             </div>
                             <div class="col-md col-sm-12 form-group" >
                                 <h6>foto</h6>
@@ -162,12 +170,14 @@
               <tr>
                 <th scope="col">Nombre</th>
                 <th scope="col">descripcion</th>
+                <th scope="col">precio</th>
               </tr>
             </thead>
             <tbody>
               <tr th:each="producto: ${productos}">
                 <td th:text="${producto.nombre}"></td>
                 <td th:text="${producto.descripcion}"></td>
+                <td th:text="${producto.precio}"></td>
                   
               </tr>
     </section>

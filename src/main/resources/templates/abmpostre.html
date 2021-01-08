@@ -70,7 +70,10 @@
                                 <h6>Descripcion</h6>
                                 <input type="text" name="descripcion" placeholder="descripcion" class="form-control">
                             </div>
-                           
+                            <div class="col-md col-sm-12 form-group" >
+                                <h6>Precio</h6>
+                                <input type="number" name="precio" placeholder="precio" class="form-control">
+                            </div>
                             <div class="col-md col-sm-12 form-group" >
                                 <h6>foto</h6>
                                 <input type="file" name="archivo"  ></input>
@@ -112,6 +115,10 @@
                             <div class="col-md col-sm-12 form-group" >
                                 <h6>Descripcion</h6>
                                 <input type="text" name="descripcion" placeholder="descripcion" class="form-control">
+                            </div>
+                            <div class="col-md col-sm-12 form-group" >
+                                <h6>Precio</h6>
+                                <input type="number" name="precio" placeholder="precio" class="form-control">
                             </div>
                             <div class="col-md col-sm-12 form-group" >
                                 <h6>foto</h6>
@@ -162,13 +169,14 @@
               <tr>
                 <th scope="col">Nombre</th>
                 <th scope="col">descripcion</th>
+                <th scope="col">precio</th>
               </tr>
             </thead>
             <tbody>
               <tr th:each="postre: ${postres}">
                 <td th:text="${postre.nombre}"></td>
                 <td th:text="${postre.descripcion}"></td>
-                  
+                <td th:text="${postre.precio}"></td>
               </tr>
     </section>
 

@@ -4,6 +4,7 @@ import com.reposteria.sugarfantasy.Service.ProductoService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
+//@PreAuthorize("ROLE_ADMIN")
 @RequestMapping("/producto")
 public class ProductoController {
 
@@ -27,9 +29,9 @@ public class ProductoController {
 
     @PostMapping("/registrar")
     public String registrar(ModelMap modelo, @RequestParam String nombre, @RequestParam String descripcion,
-            @RequestParam MultipartFile archivo) {
+            @RequestParam String precio ,@RequestParam MultipartFile archivo) {
         try {
-            productoS.alta(nombre, descripcion, archivo);
+            productoS.alta(nombre, descripcion, precio, archivo);
             modelo.put("exito", "Producto registrado con exito");
             modelo.put("productos", productoS.lista());
             return "abmproducto.html";
@@ -44,9 +46,9 @@ public class ProductoController {
 
     @PostMapping("/modificar")
     public String modificar(ModelMap modelo,@RequestParam String id, @RequestParam String nombre, @RequestParam String descripcion,
-            @RequestParam MultipartFile archivo) {
+            @RequestParam String precio,@RequestParam MultipartFile archivo) {
         try {
-            productoS.modificar(id, nombre, descripcion, archivo);
+            productoS.modificar(id, nombre, descripcion, precio, archivo);
             modelo.put("exitom", "Producto registrado con exito");
             modelo.put("productos", productoS.lista());
             return "abmproducto.html";

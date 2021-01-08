@@ -25,7 +25,40 @@
   <body>
 
     <!-- Navigation -->
-    <div th:replace="fragments::navbar"></div>
+    <div >
+      
+  <img src="/img/logo sugarfantasy.jpg" height="250" width="250" style="margin-left: 42%;margin-top: 2%; margin-bottom: 2%;">
+  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+      <div class="container">
+         
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav mx-auto">
+                 
+                  <li class="nav-item px-lg-4">
+                      <a class="nav-link text-uppercase text-expanded"
+                          href="/">Home
+                          
+                      </a>
+                  </li>
+                  <li class="nav-item px-lg-4">
+                      <a class="nav-link text-uppercase text-expanded"
+                          href="/tortas">Tortas</a>
+                  </li>
+                  
+                  <li class="nav-item active px-lg-4">
+                      <a class="nav-link text-uppercase text-expanded"
+                          href="/postres">Postres</a>
+                  </li>
+                  <li class="nav-item px-lg-4">
+                      <a class="nav-link text-uppercase text-expanded"
+                          href="/productos">Productos</a>
+                  </li>
+                
+              </ul>
+          </div>
+      </div>
+  </nav>
+    </div>
   
     <br>
 
@@ -34,14 +67,14 @@
         <!--Cards para mostrar sitios-->
         <div class="caja-1">
           <div class="row row-cols-1 row-cols-md-5">
-            <div class="card" th:each="p : ${postres}" style="margin-left: auto;margin-right: auto; background-color: pink;">
+            <div class="card2" th:each="p : ${postres}" >
               <img class="card-img-top" th:if="${p.foto != null}"
                 th:src="@{/foto/load/__${p.foto.id}__}" id="img" object-fit="cover"
                 width="50" height="250" alt="...">
               <div class="card-body">
-                <h5 class="card-title" th:text="${p.nombre}"></h5>
+                
                 <a th:href="@{/postre/detalle/} +
-                  ${p.id}" class="btn btn-primary">Ver mas</a>
+                  ${p.id}" class="btn btn-primary"><h5  th:text="${p.nombre}"></h5></a>
 
               </div>
             </div>

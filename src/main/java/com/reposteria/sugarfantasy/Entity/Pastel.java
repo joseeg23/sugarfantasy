@@ -29,6 +29,9 @@ public class Pastel implements Serializable {
     private String bizcocho;
     private String cubierta;
     private String tamano;
+    private int precioP; //precio torta pequeña
+    private int precioM; //precio torta mediana
+    
     @Temporal(TemporalType.DATE)
     private Date alta;
     @Temporal (TemporalType.DATE)
@@ -105,6 +108,23 @@ public class Pastel implements Serializable {
     public void setTamano(String tamano) {
         this.tamano = tamano;
     }
+
+    public int getPrecioP() {
+        return precioP;
+    }
+
+    public void setPrecioP(int precioP) {
+        this.precioP = precioP;
+    }
+
+    public int getPrecioM() {
+        return precioM;
+    }
+
+    public void setPrecioM(int precioM) {
+        this.precioM = precioM;
+    }
+    
     public Date getAlta() {
         return alta;
     }
